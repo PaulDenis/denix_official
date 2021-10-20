@@ -2,18 +2,24 @@
   <div id="app">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <Header />
+    <Content /> 
+    <Footer />
   </div>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
+import Content from './components/Content.vue'
 
 export default {
   name: 'App',
   components: {
     // HelloWorld
-    Header
+    Header,
+    Footer,
+    Content
   }
 }
 </script>
