@@ -11,15 +11,15 @@
         <a class="nav-link" 
         :class="[active_page == 1 ? 'active' : '']"  
         href="#" 
-        @click="active_page=1">About me</a>
+        @click="active_page=1, $emit('active', active_page)">About me</a>
         <a class="nav-link" 
         :class="[active_page == 2 ? 'active' : '']" 
         href="#" 
-        @click="active_page=2">My projects</a>
+        @click="active_page=2, $emit('active', active_page)">My projects</a>
         <a class="nav-link" 
         :class="[active_page == 3 ? 'active' : '']" 
         href="#" 
-        @click="active_page=3">Contacts</a>
+        @click="active_page=3, $emit('active', active_page)">Contacts</a>
         <!-- <a class="nav-link disabled">Disabled</a> -->
       </div>
     </div>
