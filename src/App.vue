@@ -1,11 +1,15 @@
 <template>
   <div id="app">
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <div v-if="active_page == 0" class="container">
+      <Landing @active="set_active"/>
+    </div>
+    <div v-else>
     <Header @active="set_active" />
     <AboutMe v-if="active_page == 1" /> 
     <Projects v-else-if="active_page == 2" />
     <Contacts v-else-if="active_page == 3" />
     <Footer />
+    </div>
   </div>
 </template>
 
@@ -17,6 +21,7 @@ import Footer from './components/Footer.vue'
 import AboutMe from './components/About_me.vue'
 import Projects from './components/Projects.vue'
 import Contacts from './components/Contacts.vue'
+import Landing from './components/Landing.vue'
 
 export default {
   name: 'App',
@@ -26,11 +31,12 @@ export default {
     Footer,
     AboutMe,
     Projects,
-    Contacts
+    Contacts,
+    Landing
   },
   data() {
     return {
-      active_page: 1
+      active_page: 0
     }
   },
   methods: {
@@ -47,4 +53,5 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
+
 </style>
