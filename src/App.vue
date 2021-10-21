@@ -1,14 +1,20 @@
 <template>
   <div id="app">
-    <div v-if="active_page == 0" class="container">
-      <Landing @active="set_active"/>
+    <div v-if="isLoading" class="loader"> <!-- Create a real Loader -->
+      <img src="./assets/th.gif" alt="Loading" id="loader"> 
+      <img src="./assets/logo.png" alt="Fox logo" class="loading_logo">
     </div>
     <div v-else>
-    <Header @active="set_active" />
-    <AboutMe v-if="active_page == 1" /> 
-    <Projects v-else-if="active_page == 2" />
-    <Contacts v-else-if="active_page == 3" />
-    <Footer />
+      <div v-if="active_page == 0" class="container">
+        <Landing @active="set_active"/>
+      </div>
+      <div v-else>
+        <Header @active="set_active" />
+        <AboutMe v-if="active_page == 1" /> 
+        <Projects v-else-if="active_page == 2" />
+        <Contacts v-else-if="active_page == 3" />
+        <Footer />
+      </div>
     </div>
   </div>
 </template>
@@ -36,13 +42,22 @@ export default {
   },
   data() {
     return {
-      active_page: 0
+      active_page: 0,
+      isLoading: true
     }
   },
   methods: {
     set_active(active) {
       this.active_page = active;
+    },
+    stopLoading() {
+      setTimeout(() =>  {
+        this.isLoading = false;
+      }, 1000);
     }
+  },
+  mounted() {
+    this.stopLoading();
   }
 }
 </script>
@@ -52,6 +67,23 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+#loader {
+  height: 50vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.loading_logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 50vh;
+  z-index: 2;
 }
 
 </style>
